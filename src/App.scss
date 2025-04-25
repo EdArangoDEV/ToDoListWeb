@@ -1,3 +1,10 @@
+$primary: #1e1e1e;
+
+.app-container {
+  background-color: $primary;
+  min-height: 100vh;
+}
+
 .App {
   text-align: center;
 }

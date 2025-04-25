@@ -1,0 +1,16 @@
+@import '/src/styles.scss';
+
+.card {
+    background-color: $secondary;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    color: $quaternary;
+    font-family: $type-font;
+}
+.btn-info {
+    background-color: $tertiary;
+    color: $quaternary;
+}
+
+

@@ -1,0 +1,42 @@
+@import '/src/App.scss';
+@import '/src/styles.scss';
+
+
+/* Formulario.css */
+
+.custom-form {
+    background-color: $primary; /* color de fondo del formulario */
+    color : $quaternary; /* color del texto */
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .custom-form .form-label {
+    color: $quaternary; /* color de las etiquetas */
+  }
+  
+
+
+  .custom-form .form-control {
+    border: 2px $secondary;
+    background-color: $secondary;
+    color: $quaternary; /* color de los campos de entrada */
+  }
+
+  .custom-form .form-control::placeholder {
+    color: $quaternary; /* color deseado, aquí un rojo tomate */
+    opacity: 0.5; /* para que Firefox muestre el color correctamente */
+  }
+  
+  .custom-form .form-control:focus {
+    border-color: #005f9e;
+    box-shadow: 0 0 5px #005f9e;
+  }
+  
+  .custom-form .form-check-label {
+    color: $quaternary;
+  }
+  

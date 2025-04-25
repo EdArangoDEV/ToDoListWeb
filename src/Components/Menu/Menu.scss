@@ -1,0 +1,13 @@
+@import '/src/styles.scss';
+
+.navbar  {
+    background-color: $secondary;
+    margin-bottom: 50px;
+
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: $quaternary;
+    font-family: $type-font; /* texto visible */
+}
