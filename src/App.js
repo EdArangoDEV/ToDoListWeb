@@ -16,8 +16,6 @@ function App() {
             <Item></Item>
             <Item></Item>
             <Item></Item>
-            <Item></Item>
-            <Item></Item>
           </Col>
         </Row>
       </Container>

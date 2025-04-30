@@ -4,15 +4,25 @@ import './Item.scss';
 
 function Item() {
   return (
-    <Card style={{ width: '18rem'}}>
-      <Card.Img variant="top" src="holder.js/50px90" />
+    <Card >
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+        <Card.Title >Title</Card.Title>
+        <Card.Text >
+          Description
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Card.Text>
+          Elaborar una aplicación web responsive en la que se pueda llevar el control de mis tareas y metas personales.
+        </Card.Text>
+        <Card.Text >
+          Due Date
+        </Card.Text>
+        <Card.Text>
+            31/05/2024
+        </Card.Text>
+      </Card.Body>
+      <Card.Body>
+        <Button variant="info">Editar</Button>
+        <Button variant="info">Eliminar</Button>
       </Card.Body>
     </Card>
   );
