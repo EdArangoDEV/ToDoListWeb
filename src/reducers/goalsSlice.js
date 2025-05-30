@@ -13,7 +13,15 @@ export const todoSlice = createSlice({
         addGoal: (state, action) => {
             console.log(action.payload);
             state.value.push(action.payload);
-        }
+        },
+        initAddGoal: (state, action) => {
+            console.log(action.payload);
+            state.value.push(action.payload);
+        },
+        removeGoal: (state, action) => {
+            console.log(action.payload);
+            state.value = state.value.filter((goal) => goal.name !== action.payload);
+        },
     }
 });
 
