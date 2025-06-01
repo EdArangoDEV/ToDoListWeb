@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./Item.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { removeTodo, setTodos } from "../../reducers/todoSlice";
+import { removeTodo  } from "../../reducers/todoSlice";
 import { removeGoal } from "../../reducers/goalsSlice";
 
 function Item(props) {
@@ -15,7 +15,7 @@ function Item(props) {
     // console.log(props.id);
     if (option === "tasks") {
       dispatch(removeTodo(props.id));
-    } else if (option === "goals") {
+    } else {
       dispatch(removeGoal(props.id));
     }
   };

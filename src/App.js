@@ -1,10 +1,10 @@
-import logo from "./logo.svg";
+
 import "./App.scss";
 import Item from "./Components/Item/Item";
 import Menu from "./Components/Menu/Menu";
 import { Col, Container, Row } from "react-bootstrap";
 import Formulario from "./Components/Formulario/Formulario";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  setTodos } from "./reducers/todoSlice";
 import { setGoals } from "./reducers/goalsSlice";
@@ -72,7 +72,7 @@ function App() {
                 {option === "tasks" &&
                   todos.map((todo, index) => (
                     <Item
-                      key={index}
+                      key={todo._id}
                       name={todo.name}
                       description={todo.description}
                       dueDate={todo.dueDate}
@@ -82,11 +82,11 @@ function App() {
                 {option === "goals" &&
                   goals.map((goal, index) => (
                     <Item
-                      key={index}
+                      key={goal._id}
                       name={goal.name}
                       description={goal.description}
                       dueDate={goal.dueDate}
-                      id={goal.id}
+                      id={goal._id}
                     />
                   ))}
               </div>
