@@ -4,48 +4,59 @@ import Item from "./Components/Item/Item";
 import Menu from "./Components/Menu/Menu";
 import { Col, Container, Row } from "react-bootstrap";
 import Formulario from "./Components/Formulario/Formulario";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { initAddTodo } from "./reducers/todoSlice";
+import {  setTodos } from "./reducers/todoSlice";
+import { setGoals } from "./reducers/goalsSlice";
 
 function App() {
   const dispatch = useDispatch();
-  const todos = useSelector((state) => state.todos.value);
+  const todos = useSelector((state) => state.tasks.value);
   const goals = useSelector((state) => state.goals.value);
   const option = useSelector((state) => state.option.value);
 
-  // const arr = [
-  //   {
-  //     name: "camiar al perro 1",
-  //   },
-  //   {
-  //     name: "camiar al perro 2",
-  //   }
-  // ];
-
-
-  async function initFetch() {
-      fetch('http://localhost:3001/tasks/getTasks',{
-        headers:{
-          "Content-Type": "application/json",
-          "Authorization": "123456"
-        },
-      }).then((response)=>
-          response.json()
-      ).then(response=>{
-        console.log(response);
-        response.map((task)=>{
-          dispatch(initAddTodo(task));
-        })
-      }).catch((err)=>{
-          console.log(err);
-      });
-  }
   
-  useEffect(() => {
-    initFetch();
-  }, []);
+  async function initFetch(endpoint) {
+    try {
 
+      const response = await fetch(
+        `http://localhost:3001/${endpoint}/get${
+          endpoint.charAt(0).toUpperCase() + endpoint.slice(1)
+        }`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "123",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      if (Array.isArray(data) && data.length > 0) {
+        if (endpoint === "tasks") {
+         dispatch(setTodos(data));
+        } else if (endpoint === "goals") {
+          dispatch(setGoals(data));
+        }
+      } else {
+        console.log(`No hay ${endpoint} para procesar`);
+      }
+    } catch (err) {
+      console.error(`Error fetching ${endpoint}:`, err);
+    }
+  }
+
+  useEffect(() => {
+    if (option) {
+      initFetch(option);
+    }
+  }, [option]);
 
   return (
     <div className="App app-container">
@@ -57,20 +68,28 @@ function App() {
           </Col>
           <Col>
             <Row>
-              <div className='scrolling'>
-            {option==='tasks' &&
-                todos.map((todo, index)=>(
-                  <Item key={index} name={todo.name} description={todo.description} dueDate={todo.dueDate} id={todo._id}/>
-   
-                 ))
-            }      
-           {option==='goals' &&
-                goals.map((goal, index)=>(
-                  <Item key={index} name={goal.name} description={goal.description} dueDate={goal.dueDate} d={goal.id}/>
-   
-                 ))
-            }      
-            </div>
+              <div className="scrolling">
+                {option === "tasks" &&
+                  todos.map((todo, index) => (
+                    <Item
+                      key={index}
+                      name={todo.name}
+                      description={todo.description}
+                      dueDate={todo.dueDate}
+                      id={todo._id}
+                    />
+                  ))}
+                {option === "goals" &&
+                  goals.map((goal, index) => (
+                    <Item
+                      key={index}
+                      name={goal.name}
+                      description={goal.description}
+                      dueDate={goal.dueDate}
+                      id={goal.id}
+                    />
+                  ))}
+              </div>
             </Row>
           </Col>
         </Row>

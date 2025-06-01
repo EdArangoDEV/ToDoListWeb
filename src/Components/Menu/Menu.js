@@ -15,6 +15,7 @@ function Menu() {
     e.preventDefault();
     if (option !== selectedOption) {
       dispatch(changeOption(selectedOption));
+      
     }
   };
 

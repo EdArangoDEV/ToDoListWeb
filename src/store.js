@@ -5,7 +5,7 @@ import optionReducer from "./reducers/optionSlice";
 
 export default configureStore({
     reducer: {
-        todos: todoReducer,
+        tasks: todoReducer,
         goals: goalsReducer,
         option : optionReducer
     }

@@ -38,6 +38,11 @@ function Formulario() {
           })
         );
       }
+
+      // Limpiar los inputs
+      inputRefName.current.value = "";
+      inputRefDescription.current.value = "";
+      inputRefDueDate.current.value = "";
     }
   };
 
